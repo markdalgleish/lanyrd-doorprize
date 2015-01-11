@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/lanyrd-doorprize.svg?style=flat-square)](https://www.npmjs.com/package/lanyrd-doorprize)
+
 # lanyrd-doorprize
 
 Randomly pick a winner from a Lanyrd event attendee list.
