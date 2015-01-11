@@ -2,7 +2,7 @@
 
 # lanyrd-doorprize
 
-Randomly pick a winner from a Lanyrd event attendee list.
+Randomly pick a winner from a [Lanyrd](http://lanyrd.com) event attendee list.
 
 ```bash
 $ npm install -g lanyrd-doorprize
