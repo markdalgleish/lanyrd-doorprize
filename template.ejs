@@ -1,0 +1,100 @@
+<head>
+  <title>Lanyrd Doorprize</title>
+  <style type="text/css">
+  body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .card {
+    position: absolute;
+    z-index: 0;
+    height: 80px;
+    width: 140px;
+    font-size: 20px;
+    font-family: Helvetica;
+    transition: all .7s ease;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0px 0px 10px white;
+    border: 2px solid black;
+    background-color: rgba(180, 255, 130, 0.8);
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 60px 60px;
+  }
+
+  .card.winner {
+    transition: all 3s ease;
+    height: 120px;
+    width: 620px;
+    margin-left: -310px;
+    margin-top: -60px;
+    top: 50%;
+    left: 50%;
+    font-size: 40px;
+    line-height: 120px;
+    background-size: 100px 100px;
+  }
+
+
+  button {
+    position: absolute;
+    width: 400px;
+    margin-left: -200px;
+    top: 35%;
+    left: 50%;
+    font-size: 200%;
+    z-index: 100000;
+    border-radius: 10px;
+  }
+  </style>
+</head>
+
+<body>
+  <button type="button">Choose the Winner</button>
+</body>
+
+<script>
+var h = document.body.offsetHeight, w = document.body.offsetWidth, z = 0;
+function r(n) { return Math.floor( Math.random() * n ); }
+function anim(el) {
+  el.style["zIndex"] = z++;
+  el.style["transform"] = "translate3d("+ (r(w)-70) +"px,"+r(h-20) + "px,0) rotate("+r(360)+"deg)";
+}
+
+var names = <%- data %>;
+
+var winner = Math.floor( Math.random() * names.length );
+
+setTimeout( function() {
+  var els = names.map( function( name ) {
+    var el = document.createElement("div");
+    el.className = "card";
+    el.textContent = name[0];
+    el.style.backgroundImage = "url('"+name[1]+"')";
+    anim(el);
+    document.body.appendChild( el );
+    return el;
+  });
+
+  document.querySelector("button").addEventListener("click", function() {
+    clearInterval(timer);
+    els[winner].className = "card winner";
+    els[winner].style["transform"] = "";
+    els[winner].style["zIndex"] = z++;
+    this.style["display"] = "none";
+  }, false);
+
+  var timer = setInterval(function() {
+    anim( els [ r(names.length) ] );
+  }, 10);
+
+}, 10);
+</script>

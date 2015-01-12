@@ -7,7 +7,7 @@ Randomly pick a winner from a [Lanyrd](http://lanyrd.com) event attendee list.
 ```bash
 $ npm install -g lanyrd-doorprize
 
-$ lanyrd-doorprize 2015/melbjs-january --open
+$ lanyrd-doorprize 2015/melbjs-january
 ```
 
 ## License
