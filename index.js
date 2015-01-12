@@ -1,13 +1,14 @@
 var request = require('request');
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
 var cheerio = require('cheerio');
 var ejs = require('ejs');
 var jsesc = require('jsesc');
 var getPort = require('get-port');
 var opn = require('opn');
 
-var template = ejs.compile(fs.readFileSync('./template.ejs', 'utf8'));
+var template = ejs.compile(fs.readFileSync(path.join(__dirname, 'template.ejs'), 'utf8'));
 
 module.exports = function (event, callback) {
   var url = 'http://m.lanyrd.com/' + event + '/attendees/';
