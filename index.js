@@ -23,10 +23,11 @@ module.exports = function (event, callback) {
 
       $('a[href^="/profile"]').each(function() {
         var $this = $(this);
-        data.push([
-          jsesc($this.find('div.title').text().trim(), { quotes: 'double' }),
-          $this.find('img').attr('src')
-        ]);
+        data.push({
+          name: jsesc($this.find('div.title').text().trim(), { quotes: 'double' }),
+          profileUrl: 'http://lanyrd.com' + $this.attr('href'),
+          avatarUrl: $this.find('img').attr('src')
+        });
       });
 
       getPort(function(err, port) {
