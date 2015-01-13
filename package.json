@@ -1,6 +1,6 @@
 {
   "name": "lanyrd-doorprize",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "description": "Randomly pick a winner from a Lanyrd event attendee list",
   "main": "index.js",
   "bin": {
